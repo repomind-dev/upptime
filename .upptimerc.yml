@@ -2,10 +2,12 @@ owner: repomind-dev
 repo: upptime
 
 sites:
-  - name: Dashboard (prod)
-    url: https://repomind.dev
-  - name: API (prod)
-    url: https://api.repomind.dev
+  # Endpoints de prod ficarao comentados ate o GO_LIVE.
+  # Ver docs/GO_LIVE.md no repo principal para checklist de ativacao.
+  # - name: Dashboard (prod)
+  #   url: https://repomind.dev
+  # - name: API (prod)
+  #   url: https://api.repomind.dev
   - name: Dashboard (qa)
     url: https://qa.repomind.dev
     headers:
