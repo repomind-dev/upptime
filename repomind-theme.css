@@ -1,11 +1,11 @@
-/* RepoMind Status — alinhado com a landing/dashboard.
-   Upptime permite override de CSS variables + regras arbitrarias.
-   Mirror de apps/web/app/globals.css (.dark). */
+/* RepoMind Status — identidade alinhada com landing/dashboard.
+   Upptime carrega global.css DEPOIS do themeUrl — precisamos !important
+   nos overrides diretos. Svelte usa article/section/tag, nao "card". */
 
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
-  /* ── Cores RepoMind ────────────────────────────────────────── */
+  /* Tokens nativos do Upptime (CSS variables) */
   --body-background-color: #0a0b10;
   --body-text-color: #eae6dd;
 
@@ -13,7 +13,7 @@
   --card-border-color: #1c1c28;
 
   --nav-background-color: #08090d;
-  --nav-border-bottom-color: transparent;
+  --nav-border-bottom-color: #1c1c28;
   --nav-current-border-bottom-color: #00e676;
 
   --up-border-left-color: #00e676;
@@ -37,196 +37,307 @@
 
   --graph-opacity: 1;
   --graph-filter: none;
-
-  /* Custom tokens */
-  --rm-accent: #00e676;
-  --rm-text: #eae6dd;
-  --rm-subtle: #9795a8;
-  --rm-muted-dim: #78768a;
-  --rm-border: #1c1c28;
-  --rm-surface: #0d0d12;
 }
 
-/* ── Fundo com atmosfera sutil (verde radial no topo) ────────── */
+/* ═══ Body — fonte + fundo com atmosfera ═══════════════════════ */
+html,
 body {
-  font-family:
-    "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-feature-settings: "cv11", "ss01";
   background:
     radial-gradient(
-      ellipse 70% 40% at 50% -10%,
-      rgba(0, 230, 118, 0.08) 0%,
-      transparent 70%
+      ellipse 80% 50% at 50% -10%,
+      rgba(0, 230, 118, 0.1) 0%,
+      transparent 60%
     ),
     #0a0b10 !important;
-  background-attachment: fixed;
+  background-attachment: fixed !important;
+  color: #eae6dd !important;
+  font-family:
+    "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--rm-text);
+  padding-bottom: 3rem !important;
 }
 
-/* ── Tipografia display (Syne) pras headings ─────────────────── */
+/* ═══ Tipografia — Syne display pra headings ══════════════════ */
 h1,
 h2,
-h3 {
-  font-family: "Syne", "DM Sans", sans-serif;
-  letter-spacing: -0.02em;
-  color: var(--rm-text);
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Syne", "DM Sans", sans-serif !important;
+  color: #eae6dd !important;
+  letter-spacing: -0.03em !important;
+  opacity: 1 !important;
 }
 
 h1 {
-  font-weight: 800;
-  font-size: 2.5rem;
-  line-height: 1.1;
+  font-weight: 800 !important;
+  font-size: 2.25rem !important;
+  line-height: 1.1 !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+h1 strong {
+  color: #00e676 !important;
+  font-weight: 800 !important;
 }
 
 h2 {
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  font-weight: 700 !important;
+  font-size: 1.375rem !important;
+  margin: 2rem 0 1rem 0 !important;
+  letter-spacing: -0.02em !important;
 }
 
 h3 {
-  font-weight: 600;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  opacity: 1 !important;
 }
 
-/* Paragrafos mais suaves pra hierarquia */
-p {
-  color: var(--rm-subtle);
-  line-height: 1.6;
+h4 {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  color: #eae6dd !important;
 }
 
-/* ── Mono onde precisar ──────────────────────────────────────── */
+p,
+.lead {
+  color: #9795a8 !important;
+  line-height: 1.65 !important;
+}
+
+/* Header do intro mais espaçado */
+main.container > header {
+  margin: 3rem 0 2rem 0 !important;
+}
+
+/* ═══ Mono ═══════════════════════════════════════════════════ */
 code,
 pre,
 kbd,
 samp {
   font-family:
-    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    monospace;
-  font-size: 0.9em;
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  font-size: 0.9em !important;
 }
 
-/* ── Navegação — logo + links ───────────────────────────────── */
+/* ═══ Navegação ══════════════════════════════════════════════ */
 nav {
-  border-bottom: 1px solid var(--rm-border) !important;
+  border-bottom: 1px solid #1c1c28 !important;
   backdrop-filter: blur(8px);
-  background-color: rgba(8, 9, 13, 0.8) !important;
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(8, 9, 13, 0.85) !important;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav a {
-  color: var(--rm-subtle);
-  font-weight: 500;
-  transition: color 0.15s ease;
+  color: #9795a8 !important;
+  font-weight: 500 !important;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease !important;
+  font-family: "DM Sans", sans-serif !important;
 }
 
-nav a:hover,
+nav a:hover {
+  color: #eae6dd !important;
+}
+
 nav a[aria-current="page"] {
-  color: var(--rm-text);
+  color: #eae6dd !important;
+  border-bottom-color: #00e676 !important;
+  border-bottom-width: 2px !important;
 }
 
-/* Underline ativa com verde mais grosso */
-nav a[aria-current="page"] {
-  border-bottom: 2px solid var(--rm-accent) !important;
+nav .logo {
+  font-family: "Syne", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #eae6dd !important;
 }
 
-/* ── Cards (endpoints) — bordas refinadas + hover ───────────── */
-[class*="card"],
-.card,
-.status-card,
-.live-status-card {
-  background-color: var(--rm-surface) !important;
-  border: 1px solid var(--rm-border) !important;
+nav .logo img {
+  border-radius: 8px !important;
+}
+
+/* ═══ Cards (<article>) ══════════════════════════════════════ */
+article {
+  background-color: #0d0d12 !important;
+  border: 1px solid #1c1c28 !important;
   border-radius: 12px !important;
+  padding: 1.25rem 1.5rem !important;
   transition:
     border-color 0.2s ease,
-    transform 0.2s ease;
+    background-color 0.2s ease !important;
 }
 
-[class*="card"]:hover {
+article:hover {
   border-color: #2a2a3a !important;
 }
 
-/* Borda esquerda mais grossa nos estados */
-[class*="up"] {
-  border-left-width: 3px;
+article.up {
+  border-left: 1px solid #1c1c28 !important;
+  position: relative;
 }
 
-/* ── Links com verde da marca ────────────────────────────────── */
+article.up::before,
+article.down::before,
+article.degraded::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+}
+
+article.up::before {
+  background: #00e676;
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.4);
+}
+
+article.down::before {
+  background: #f87171;
+}
+
+article.degraded::before {
+  background: #f59e0b;
+}
+
+article + article {
+  margin-top: 0.75rem !important;
+}
+
+/* ═══ Tags de status ═════════════════════════════════════════ */
+.tag {
+  font-family: "DM Sans", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: lowercase !important;
+  border-radius: 6px !important;
+  padding: 0.3rem 0.55rem !important;
+  margin-left: 0.5rem !important;
+}
+
+/* ═══ Links ══════════════════════════════════════════════════ */
 a {
-  color: var(--rm-accent);
-  text-decoration: none;
-  transition: opacity 0.15s ease;
+  color: #00e676 !important;
+  text-decoration: none !important;
+  transition: opacity 0.15s ease !important;
 }
 
 a:hover {
-  opacity: 0.75;
+  opacity: 0.75 !important;
 }
 
-a[aria-current="page"]:hover {
-  opacity: 1;
+nav a,
+footer a {
+  color: inherit !important;
 }
 
-/* ── Seleção ─────────────────────────────────────────────────── */
+/* ═══ Seleção ════════════════════════════════════════════════ */
 ::selection {
-  background-color: rgba(0, 230, 118, 0.25);
-  color: #eae6dd;
+  background-color: rgba(0, 230, 118, 0.3) !important;
+  color: #eae6dd !important;
 }
 
-/* ── Botões — verde solido, preto por dentro ─────────────────── */
+/* ═══ Botões ═════════════════════════════════════════════════ */
 button,
 [type="button"],
 [type="submit"] {
   font-family: "DM Sans", sans-serif !important;
   font-weight: 600 !important;
   border-radius: 8px !important;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.01em !important;
   transition:
     opacity 0.15s ease,
-    transform 0.1s ease;
+    transform 0.1s ease !important;
+  cursor: pointer;
 }
 
 button:hover,
 [type="button"]:hover,
 [type="submit"]:hover {
-  opacity: 0.9;
+  opacity: 0.9 !important;
 }
 
 button:active {
   transform: scale(0.98);
 }
 
-/* ── Tags de status — peso e kerning ────────────────────────── */
-[class*="tag"] {
-  font-weight: 600 !important;
-  letter-spacing: 0.01em;
-  text-transform: lowercase;
-  font-size: 0.8em;
+/* ═══ Range selector (24h/7d/30d/1y/all) ═════════════════════ */
+form.r {
+  gap: 0.25rem !important;
+}
+
+form.r label {
+  padding: 0.35rem 0.75rem !important;
   border-radius: 6px !important;
-}
-
-/* ── Footer discreto ─────────────────────────────────────────── */
-footer,
-[class*="footer"] {
-  color: var(--rm-muted-dim);
-  font-size: 0.85em;
-}
-
-footer a,
-[class*="footer"] a {
-  color: var(--rm-subtle);
-}
-
-/* ── Range selector (24h / 7d / 30d / 1y / all) ──────────────── */
-[class*="range"] button {
-  background: transparent !important;
-  color: var(--rm-subtle) !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: #9795a8 !important;
+  cursor: pointer;
+  transition: all 0.15s ease !important;
   border: 1px solid transparent !important;
 }
 
-[class*="range"] button[aria-pressed="true"],
-[class*="range"] .active {
-  color: var(--rm-text) !important;
-  background: var(--rm-surface) !important;
-  border-color: var(--rm-border) !important;
+form.r label:hover {
+  color: #eae6dd !important;
+}
+
+form.r input[type="radio"] {
+  display: none;
+}
+
+form.r input[type="radio"]:checked + label {
+  color: #eae6dd !important;
+  background: #0d0d12 !important;
+  border-color: #1c1c28 !important;
+}
+
+/* ═══ Container ══════════════════════════════════════════════ */
+.container {
+  max-width: 880px !important;
+  padding: 0 2rem !important;
+}
+
+/* ═══ "All systems operational" box ═════════════════════════ */
+section > article:only-child {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 230, 118, 0.08) 0%,
+    rgba(0, 230, 118, 0.02) 100%
+  ) !important;
+  border-color: rgba(0, 230, 118, 0.2) !important;
+}
+
+/* ═══ Footer ═════════════════════════════════════════════════ */
+footer {
+  margin-top: 4rem !important;
+  padding-top: 2rem !important;
+  border-top: 1px solid #1c1c28 !important;
+  color: #78768a !important;
+  font-size: 0.85rem !important;
+}
+
+footer p {
+  color: #78768a !important;
+}
+
+footer a {
+  color: #9795a8 !important;
+}
+
+footer a:hover {
+  color: #eae6dd !important;
+  opacity: 1 !important;
 }
