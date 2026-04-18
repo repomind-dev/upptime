@@ -16,6 +16,8 @@ sites:
 status-website:
   cname: status.repomind.dev
   logoUrl: https://raw.githubusercontent.com/repomind-dev/upptime/master/logo.png
+  favicon: https://raw.githubusercontent.com/repomind-dev/upptime/master/logo.png
+  themeUrl: https://raw.githubusercontent.com/repomind-dev/upptime/master/assets/repomind-theme.css
   name: RepoMind Status
   introTitle: "**Status** dos serviços do RepoMind — atualizado a cada 5 minutos."
   introMessage: Esta página mostra uptime e tempo de resposta em tempo real. Problemas? Abra uma [issue](https://github.com/repomind-dev/upptime/issues) ou siga o histórico.
@@ -24,3 +26,10 @@ status-website:
       href: /
     - title: GitHub
       href: https://github.com/$OWNER/$REPO
+  metaTags:
+    - name: "color-scheme"
+      content: "dark"
+    - name: "theme-color"
+      content: "#0a0b10"
+    - name: "description"
+      content: "Status em tempo real dos serviços do RepoMind."

@@ -1,0 +1,79 @@
+/* RepoMind Status — identidade visual alinhada com o dashboard/landing */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* Paleta RepoMind (espelha apps/web/app/globals.css .dark) */
+  --body-background-color: #0a0b10;
+  --body-text-color: #eae6dd;
+
+  /* Superfícies elevadas */
+  --card-background-color: #0d0d12;
+  --card-border-color: #1c1c28;
+
+  /* Navegação */
+  --nav-background-color: #08090d;
+  --nav-border-bottom-color: #1c1c28;
+  --nav-current-border-bottom-color: #00e676;
+
+  /* Estados: up / down / degraded */
+  --up-border-left-color: #00e676;
+  --down-border-left-color: #f87171;
+  --down-background-color: #1f0a10;
+  --degraded-border-left-color: #f59e0b;
+
+  /* Tags (badges de status) */
+  --tag-color: #0a0b10;
+  --tag-up-background-color: #00e676;
+  --tag-down-background-color: #f87171;
+  --tag-degraded-background-color: #f59e0b;
+
+  /* Indicador de mudança */
+  --change-background-color: #f59e0b;
+
+  /* Botões (error + submit) */
+  --error-button-border-color: #1c1c28;
+  --error-button-background-color: #00e676;
+  --error-button-color: #0a0b10;
+  --submit-button-border-color: #1c1c28;
+  --submit-button-background-color: #00e676;
+  --submit-button-color: #0a0b10;
+
+  /* Gráficos */
+  --graph-opacity: 0.9;
+  --graph-filter: none;
+}
+
+/* Tipografia — DM Sans no corpo, JetBrains Mono em código */
+body,
+html {
+  font-family:
+    "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+}
+
+/* Selection com verde da marca */
+::selection {
+  background-color: rgba(0, 230, 118, 0.25);
+  color: #eae6dd;
+}
+
+/* Links com hover no verde da marca */
+a {
+  color: #00e676;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+a:hover {
+  opacity: 0.8;
+}
