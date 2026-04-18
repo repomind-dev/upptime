@@ -4,11 +4,11 @@ repo: upptime-qa
 sites:
   # Este repo monitora APENAS o ambiente QA.
   # Para prod, ver repomind-dev/upptime-prod (criado no GO_LIVE).
-  - name: Dashboard (qa)
+  - name: Dashboard
     url: https://qa.repomind.dev
     headers:
       - "x-vercel-protection-bypass: $VERCEL_BYPASS_QA"
-  - name: API (qa)
+  - name: API
     url: https://api.qa.repomind.dev
 
 status-website:
