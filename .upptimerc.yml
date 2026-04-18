@@ -8,6 +8,8 @@ sites:
     url: https://api.repomind.dev
   - name: Dashboard (qa)
     url: https://qa.repomind.dev
+    headers:
+      - "x-vercel-protection-bypass: $VERCEL_BYPASS_QA"
   - name: API (qa)
     url: https://api.qa.repomind.dev
 
